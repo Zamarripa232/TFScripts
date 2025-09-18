@@ -13,9 +13,9 @@
 
 # Set the path for the source folder that contains all the named student pdfs
 # And also set the destination folders. 
-$sourceFolder = "C:\Users\TfStudent\Documents\Test Scripts\SplitPDF"
-$amFolder     = "C:\Users\TfStudent\Tech Foundry\Programs - Documents\Active Students\Fall 2025\Fall 2025 AM"
-$pmFolder     = "C:\Users\TfStudent\Tech Foundry\Programs - Documents\Active Students\Fall 2025\Fall 2025 PM"
+$sourceFolder = "source folder path here"
+$amFolder     = "AM folder location and path here"
+$pmFolder     = "PM folder location and path here"
 
 # Get all PDFs in the source folder
 Get-ChildItem -Path $sourceFolder -Filter "*.pdf" | ForEach-Object {

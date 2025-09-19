@@ -10,3 +10,5 @@ Once the student intake documentation is split, the folder structure is created 
 This is a Python script used to quickly build out the list of HTML formatted job listings and descriptions for the weekly job alert. Uses a reference Excel spreadsheet as input and outputs the necessary html into a txt file for convenient copying.
 # ConsolidateJATs
 This is the Google Apps Script that runs within the main JAT spreadsheet at an hourly schedule that consolidates all the student job trackers.
+# JATCreator
+This is a Google Apps Script that runs within the main JATCreator manually to provide each student a clean template shared to them directly.

@@ -53,7 +53,12 @@ function consolidateJATs() {
     try {
       const studentSpreadsheet = SpreadsheetApp.openByUrl(sheetUrl);
       const studentSheet = studentSpreadsheet.getSheets()[0];
-      const studentData = studentSheet.getDataRange().getValues();
+      const lastRow = studentSheet.getLastRow();
+      const maxCols = 13; // Columns A–M
+
+      // const studentData = studentSheet.getDataRange().getValues(); Old line
+      // Replaced with line below to limit range to prevent errors when students break things
+      const studentData = studentSheet.getRange(1, 1, lastRow, maxCols).getValues();
 
       // Skip header row on each
       for (let j = 1; j < studentData.length; j++) {

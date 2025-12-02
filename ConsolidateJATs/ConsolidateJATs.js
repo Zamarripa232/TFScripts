@@ -20,11 +20,7 @@ function consolidateJATs() {
   // This will create it if it doesn't exist
   // but that's just a failsafe, it should always exist.
   let dataSheet = mainSheet.getSheetByName("Consolidated Data");
-  if (!dataSheet){
-    dataSheet = mainSheet.insertSheet("Consolidated Data");
-  } else {
-    dataSheet.clear(); // clear data before pull
-  }
+
 
   // Set up header row for consolidated Data tab
   const headers = ["Student Name", "Cohort", "Tracker", "Company", "Job Title", "Application Link", "Status", "Application Date", "1st Interview Date", "2nd Interview Date", "3rd Interview Date", "Offer Received", "Offer Accepted", "Job Started", "Rate of Pay", "Comment"];
@@ -53,7 +49,13 @@ function consolidateJATs() {
     try {
       const studentSpreadsheet = SpreadsheetApp.openByUrl(sheetUrl);
       const studentSheet = studentSpreadsheet.getSheets()[0];
-      const studentData = studentSheet.getDataRange().getValues();
+      
+      const lastRow = studentSheet.getLastRow();
+      const maxCols = 13; // Columns A–M
+
+      // const studentData = studentSheet.getDataRange().getValues(); Old line
+      // Replaced with line below to limit range to prevent errors when students break things
+      const studentData = studentSheet.getRange(1, 1, lastRow, maxCols).getValues();
 
       // Skip header row on each
       for (let j = 1; j < studentData.length; j++) {
@@ -71,7 +73,12 @@ function consolidateJATs() {
     }
   }
     
-  // Batch party
+  // Batch party, clear datasheet first
+  if (!dataSheet){
+    dataSheet = mainSheet.insertSheet("Consolidated Data");
+  } else {
+    dataSheet.clear();
+  }
   if (allRows.length > 0){
     dataSheet.getRange(dataSheet.getLastRow()+ 1, 1, allRows.length, allRows[0].length).setValues(allRows);
   }

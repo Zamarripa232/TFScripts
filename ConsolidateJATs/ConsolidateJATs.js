@@ -49,7 +49,10 @@ function consolidateJATs() {
     try {
       const studentSpreadsheet = SpreadsheetApp.openByUrl(sheetUrl);
       const studentSheet = studentSpreadsheet.getSheets()[0];
+<<<<<<< HEAD
       
+=======
+>>>>>>> c7eb63ba0b923b9eec1464bb9889d26aee568e0a
       const lastRow = studentSheet.getLastRow();
       const maxCols = 13; // Columns A–M
 

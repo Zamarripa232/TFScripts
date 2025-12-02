@@ -24,7 +24,6 @@ function consolidateJATs() {
 
   // Set up header row for consolidated Data tab
   const headers = ["Student Name", "Cohort", "Tracker", "Company", "Job Title", "Application Link", "Status", "Application Date", "1st Interview Date", "2nd Interview Date", "3rd Interview Date", "Offer Received", "Offer Accepted", "Job Started", "Rate of Pay", "Comment"];
-  dataSheet.appendRow(headers)
 
   // Get everything ready to batch
   let allRows = [];
@@ -81,6 +80,7 @@ function consolidateJATs() {
     dataSheet = mainSheet.insertSheet("Consolidated Data");
   } else {
     dataSheet.clear();
+    dataSheet.appendRow(headers)
   }
   if (allRows.length > 0){
     dataSheet.getRange(dataSheet.getLastRow()+ 1, 1, allRows.length, allRows[0].length).setValues(allRows);
